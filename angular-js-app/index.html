@@ -34,117 +34,41 @@
 
   <div class="container">
     <div ng-controller="HomeController">
-      <h1>{{ helloWorld }}</h1>
-      <p>Writing this live into the browser...</p>
+      <h1 ng-click="doStuff()">{{ helloWorld }}</h1>
     </div>
   </div>
-
   <hr/>
-
+    <p>{{info}}</p>
   <!-- /resources1 -->
-  <div class="container">
+  <div class="container"  ng-controller="HomeController">
     <h1>Firma</h1>
     <h2>Afisare firme</h2>
-    <table class="table table-bordered">
-      <tr>
+    <table class="table table-bordered"  >
+      <tr >
         <th>Nume</th>
         <th>ID</th>
         <th style="width:210px;">Options</th>
       </tr>
-      <tr>
-        <td>Skoda</td>
-        <td>1</td>
+      <tr ng-repeat="item in firme">
+        <td>{{item.nume}}</td>
+        <td>{{item.id}}</td>
         <td>
-          <a href="">
-            <span class="label label-success">
+     <a href="">
+            <button ng-click="getFimaById(item.id)" class="btn btn-success btn-xs">
               Open
               <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
+            </button>
           </a>
           <a href="">
-            <span class="label label-primary">
+            <button ng-click="setUpdateFirma(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
-            </span>
+            </button>
           </a>
-          <a href="">
-            <span class="label label-danger">
+           <button ng-click="deleteFirma(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Jaguar</td>
-        <td>2</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Mini</td>
-        <td>3</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>BMW</td>
-        <td>4</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
+            </button>
         </td>
       </tr>
     </table>
@@ -152,16 +76,16 @@
     <div class="row">
       <div class="col-md-3">
         <h2>Editare firma</h2>
-        <form action="" method="">
+        <form>
           <div class="form-group">
             <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <input type="text" class="form-control" placeholder="Nume" ng-model="editFirma.nume">
           </div>
           <div class="form-group">
             <label for="attribute2">ID</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="ID">
+            <input type="text" class="form-control" placeholder="ID" ng-model="editFirma.id">
           </div>
-          <button type="submit" class="btn btn-info">Salveaza</button>
+          <button class="btn btn-info" ng-click="updateFirma(editFirma)">Salveaza</button>
         </form>
       </div>
 
@@ -171,13 +95,13 @@
         <form action="" method="">
           <div class="form-group">
             <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume" ng-model="firma.nume">
           </div>
           <div class="form-group">
             <label for="attribute2">ID</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="ID">
+            <input type="text" class="form-control" id="attribute2" placeholder="ID" ng-model="firma.id">
           </div>
-          <button type="submit" class="btn btn-success">Adauga</button>
+          <button type="submit" class="btn btn-success" ng-click="addFirma(firma)">Adauga</button>
         </form>
       </div>
     </div>

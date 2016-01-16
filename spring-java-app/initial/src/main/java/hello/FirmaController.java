@@ -10,7 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.ArrayList;
-
+import org.springframework.web.bind.annotation.*;
+@CrossOrigin
 @RestController
 public class FirmaController {
     private List<Firma> firme = new ArrayList<Firma>();
